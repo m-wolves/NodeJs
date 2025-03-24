@@ -3,7 +3,8 @@
     const app = express()
 
 //sequelize
-    const Sequelize = require('sequelize')
+    const Sequelize = require('sequelize');
+const { Where } = require('sequelize/lib/utils');
     require('./models/Produto')
     require('./models/Servico')
 
@@ -24,9 +25,10 @@
                     console.log(`tudo certo: ${resultado}`);
 
                     const resultadoCreate = await Produto.create({
-                        nome: 'mouse',
-                        preco: 10,
-                        descricao: 'Um mouse bonito'
+                        nome: 'teclado',
+                        preco: 20,
+                        descricao: 'teclado bonito'
+                        
                     })
                     console.log(resultadoCreate);
 
@@ -35,16 +37,22 @@
                     console.log(produtos);
                 
                 //procurando pelo id
-                    const produto = await Produto.findByPk(1);
-                    console.log(produto);
+                    //const produto = await Produto.findByPk(1);
+                    //console.log(produto);
 
-                    console.log(1)
+                    //console.log(1)
 
                 //update
                     produto.nome = 'Mouse gamer';
 
                     const resultadoSave = await produto.save();
                     console.log(resultadoSave)
+
+                //Delete
+                    Produto.destroy({Where: {id: 2}});
+
+                    const produto = await Produto.findByPk(2);
+                    produto.destroy();
 
             }catch (err) {
                 console.log(err);
@@ -63,9 +71,9 @@
                     console.log(`tudo certo: ${resultado}`);
 
                     const resultadoCreate = await Servico.create({
-                        nome: 'Limpeza de PCs',
-                        preco: 50,
-                        descricao: 'Serviços para limpezas de PCs'
+                        nome: 'OFICCE',
+                        preco: 100,
+                        descricao: 'Instalçao de programas'
                     })
                     console.log(resultadoCreate);
 
@@ -74,16 +82,22 @@
                     console.log(servicos);
 
                 //procurando pelo id
-                    const servico = await Servico.findByPk(1);
-                    console.log(servico);
+                    //const servico = await Servico.findByPk(1);
+                    //console.log(servico);
 
-                    console.log(1)
+                    //console.log(1)
 
                 //update
-                servico.nome = 'Limpeza de PCs ultra';
+                    servico.nome = 'Limpeza de PCs ultra';
 
-                const resultadoSave = await servico.save();
-                console.log(resultadoSave)
+                    const resultadoSave = await servico.save();
+                    console.log(resultadoSave)
+
+                //Delete
+                    Servico.destroy({Where: {id: 2}});
+
+                    const servico = await Servico.findByPk(2);
+                    servico.destroy();
 
             }catch (err) {
                 console.log(err);
