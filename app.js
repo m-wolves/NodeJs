@@ -30,29 +30,41 @@ const { Where } = require('sequelize/lib/utils');
                         descricao: 'teclado bonito'
                         
                     })
-                    console.log(resultadoCreate);
+                    /*console.log(resultadoCreate);
 
                 //Criando um array das informações
                     const produtos = await Produto.findAll();
                     console.log(produtos);
                 
                 //procurando pelo id
-                    //const produto = await Produto.findByPk(1);
-                    //console.log(produto);
+                    const produto = await Produto.findByPk(1);
+                    console.log(produto);
 
-                    //console.log(1)
+                    console.log(1)
 
                 //update
                     produto.nome = 'Mouse gamer';
 
                     const resultadoSave = await produto.save();
                     console.log(resultadoSave)
+                    */
 
+                    /*
                 //Delete
                     Produto.destroy({Where: {id: 2}});
 
                     const produto = await Produto.findByPk(2);
                     produto.destroy();
+                    */
+                   if (req.url === '/produtos') {
+                    const produtos = await Produto.findAll();
+                    res.writeHead(200, {'Content-Type': 'text/plain'});
+                    res.end((JSON.stringify(produtos)));
+                   } else {
+                    res.writeHead(200, {'Content-Type': 'text/plain'});
+                    res.end('Bem-vindo a API de produtos')
+                   }
+                    
 
             }catch (err) {
                 console.log(err);
@@ -75,7 +87,7 @@ const { Where } = require('sequelize/lib/utils');
                         preco: 100,
                         descricao: 'Instalçao de programas'
                     })
-                    console.log(resultadoCreate);
+                    /*console.log(resultadoCreate);
 
                 //Criando um array das informações
                     const servicos = await Servico.findAll();
@@ -92,12 +104,14 @@ const { Where } = require('sequelize/lib/utils');
 
                     const resultadoSave = await servico.save();
                     console.log(resultadoSave)
+                    */
 
-                //Delete
+                /*//Delete
                     Servico.destroy({Where: {id: 2}});
 
                     const servico = await Servico.findByPk(2);
                     servico.destroy();
+                    */
 
             }catch (err) {
                 console.log(err);
